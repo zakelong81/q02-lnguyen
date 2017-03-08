@@ -1,13 +1,13 @@
 # Building GoogleTest and running exercise-gtest unit tests against
-# all code in SOURCECODE subdirectory. This Makefile is based on the
-# sample Makefile provided in the official GoogleTest GitHub Repo v1.7
+# This Makefile is based on the sample Makefile provided in the 
+# official GoogleTest GitHub Repo v1.7
 
 # Flags passed to the preprocessor and compiler
 CPPFLAGS += --coverage -isystem $(GTEST_DIR)/include
 CXXFLAGS += -g -Wall -Wextra -pthread
 
 # All tests produced by this Makefile.
-TESTS = TicTacToeBoardTest
+TESTS = PiezasTest
 
 # All Google Test headers. Adjust only if you moved the subdirectory
 GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h \
@@ -19,6 +19,10 @@ all : $(TESTS)
 
 clean :
 	rm -f $(TESTS) gtest.a gtest_main.a *.o *.gcov *.gcda *.gcno *.gch
+
+test:
+	./PiezasTest
+	gcov -fbc Piezas.cpp
 
 # Builds gtest.a and gtest_main.a.
 GTEST_SRCS_ = $(GTEST_DIR)/src/*.cc $(GTEST_DIR)/src/*.h $(GTEST_HEADERS)
@@ -37,13 +41,13 @@ gtest.a : gtest-all.o
 gtest_main.a : gtest-all.o gtest_main.o
 	$(AR) $(ARFLAGS) $@ $^
 
-# Builds the TicTacToeBoard class and associated TicTacToeBoardTest
-TicTacToeBoard.o : TicTacToeBoard.h $(GTEST_HEADERS)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c TicTacToeBoard.cpp
+# Builds the Piezas class and associated PiezasTest
+Piezas.o : Piezas.h $(GTEST_HEADERS)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c Piezas.cpp
 
-TicTacToeBoardTest.o : TicTacToeBoardTest.cpp \
-                     TicTacToeBoard.h $(GTEST_HEADERS)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c TicTacToeBoardTest.cpp
+PiezasTest.o : PiezasTest.cpp \
+                     Piezas.h $(GTEST_HEADERS)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c PiezasTest.cpp
 
-TicTacToeBoardTest : TicTacToeBoard.o TicTacToeBoardTest.o gtest_main.a
+PiezasTest : Piezas.o PiezasTest.o gtest_main.a
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@
