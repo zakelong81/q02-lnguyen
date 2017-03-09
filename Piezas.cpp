@@ -17,15 +17,14 @@
 
 
 /**
- * Constructor sets an empty board (default 6 rows, 7 columns) and 
+ * Constructor sets an empty board (default 3 rows, 4 columns) and 
  * specifies it is X's turn first
 **/
 Piezas::Piezas();
 
 /**
  * Resets each board location to the Blank Piece value, with a board of the
- * same size as previously specified (or default if overloaded constructor
- * is never called).
+ * same size as previously specified
 **/
 void Piezas::reset();
 

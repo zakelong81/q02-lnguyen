@@ -19,7 +19,7 @@ ___
 ___
 `void reset();`
 
-*Resets each board location to the Blank Piece value, with a board of the same size as previously specified (or default if overloaded constructor is never called).*
+*Resets each board location to the Blank Piece value, with a board of the same size as previously specified*
 
 `Piece dropPiece(int column)`
 
