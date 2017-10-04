@@ -1,9 +1,9 @@
-#Piezas
+# Piezas
 
-##Associated Enumerated Types
+## Associated Enumerated Types
 `Piece` has four possible values: `X`,`O`,`Invalid`, and `Blank`
 
-##Member Variables
+## Member Variables
 board
 
 **board** is a 2D vector of Pieces that represents the playing board
@@ -12,7 +12,7 @@ ___
 
 **turn** represents whose turn it is to place a piece (defaults to X)
 
-##Public Functions
+## Public Functions
 `Piezas()`
 
 *Constructor sets an empty board (3 rows, 4 columns) and specifies it is X's turn first*
