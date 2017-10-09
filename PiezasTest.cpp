@@ -37,65 +37,62 @@ TEST(PiezasTest, structorCheck)
 TEST(PiezasTest, winnerCheckX)
 {
   Piezas piezas;
-  Piezas winner;
+  piezas.reset();
+  piezas.dropPiece(0);
+  piezas.dropPiece(1);
+  piezas.dropPiece(2);
+  piezas.dropPiece(3);
+  piezas.dropPiece(2);
+  piezas.dropPiece(0);
+  piezas.dropPiece(2);
+  piezas.dropPiece(3);
+  piezas.dropPiece(1);
+  piezas.dropPiece(0);
+  piezas.dropPiece(3);
+  piezas.dropPiece(1);
 
-  piezas.dropPiece(1);
-  piezas.dropPiece(0);
-  piezas.dropPiece(2);
-  piezas.dropPiece(3);
-  piezas.dropPiece(0);
-  piezas.dropPiece(1);
-  piezas.dropPiece(2);
-  piezas.dropPiece(3);
-  piezas.dropPiece(3);
-  piezas.dropPiece(0);
-  piezas.dropPiece(1);
-  piezas.dropPiece(2);
-
-  winner = piezas.gameState();
-  ASSERT_EQ(winner,X);
+  ASSERT_EQ(true, piezas.gameState()== X);
 }
 
-TEST(PiezasTest, winnerCheckO)
+TEST(PiezasTest, winnerCheckOfalse)
 {
   Piezas piezas;
-  Piezas winner;
 
-  piezas.dropPiece(1);
-  piezas.dropPiece(0);
-  piezas.dropPiece(2);
-  piezas.dropPiece(3);
+  piezas.reset();
   piezas.dropPiece(0);
   piezas.dropPiece(1);
   piezas.dropPiece(2);
   piezas.dropPiece(3);
   piezas.dropPiece(3);
+  piezas.dropPiece(2);
+  piezas.dropPiece(2);
+  piezas.dropPiece(0);
   piezas.dropPiece(0);
   piezas.dropPiece(1);
-  piezas.dropPiece(2);
+  piezas.dropPiece(3);
+  piezas.dropPiece(1);
 
-  winner = piezas.gameState();
-  ASSERT_EQ(winner,O);
+  ASSERT_EQ(false, piezas.gameState()== O);
 }
 
-TEST(PiezasTest, winnerCheckTIE)
+TEST(PiezasTest, winnerCheckTIEfalse)
 {
   Piezas piezas;
-  Piezas winner;
 
+  piezas.reset();
   piezas.dropPiece(1);
   piezas.dropPiece(0);
   piezas.dropPiece(2);
+  piezas.dropPiece(2);
+  piezas.dropPiece(3);
   piezas.dropPiece(3);
   piezas.dropPiece(0);
   piezas.dropPiece(1);
   piezas.dropPiece(2);
   piezas.dropPiece(3);
-  piezas.dropPiece(3);
   piezas.dropPiece(0);
   piezas.dropPiece(1);
-  piezas.dropPiece(2);
 
-  winner = piezas.gameState();
-  ASSERT_EQ(winner,Blank);
+
+  ASSERT_EQ(false, piezas.gameState()== Blank);
 }
