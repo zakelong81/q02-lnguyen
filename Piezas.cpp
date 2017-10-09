@@ -75,7 +75,7 @@ Piece Piezas::pieceAt(int row, int column)
 **/
 Piece Piezas::gameState()
 {
-  int countX = 0; int countO = 0;int X = 0; int O = 0;
+  int countX = 0; int countO = 0;int aX = 0; int aO = 0;
   int row =0;  int column = 0;
   bool checkwinner=true;
 
@@ -84,8 +84,8 @@ Piece Piezas::gameState()
       while(column<BOARD_COLS)
       {
         if(board[row][column]==Blank)
-          checkwinner=false;
-        column++
+            checkwinner=false;
+        column++;
       }
       row++;
   }
@@ -98,18 +98,18 @@ Piece Piezas::gameState()
   {
       while(column<BOARD_COLS)
       {
-        if(board[row][column]==O)
+        if(board[row][column]==aO)
         {
           countO++;
-          if(countO>O)
-              O = countO;
+          if(countO>aO)
+              aO = countO;
           countX = 0;
         }
         else
         {
           countX++;
-          if(countX > X)
-              X = countX;
+          if(countX > aX)
+              aX = countX;
           countO = 0;
         }
         column++;
@@ -125,18 +125,18 @@ Piece Piezas::gameState()
   {
       while(row<BOARD_ROWS)
       {
-        if(board[row][column]==O)
+        if(board[row][column]==aO)
         {
           countO++;
-          if(countO>O)
-              O = countO;
+          if(countO>aO)
+              aO = countO;
           countX = 0;
         }
         else
         {
           countX++;
-          if(countX>X)
-              X = countX;
+          if(countX>aX)
+              aX = countX;
           countO = 0;
         }
         row++;
@@ -145,8 +145,8 @@ Piece Piezas::gameState()
       countO = 0;
       column++;
   }
-  if(X>O)             return X;
-  else if(O > X)      return O;
+  if(aX>aO)             return aX;
+  else if(aO > aX)      return aO;
   else                return Blank;
   return Blank;
 }
