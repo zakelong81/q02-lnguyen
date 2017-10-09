@@ -39,7 +39,7 @@ TEST(PiezasTest, toggleCheck) {
   bool check=1;
   if(piezas.switchTurn()!=O)
   {
-    checkToggle=0;
+    check=0;
   }
   ASSERT_EQ(1,check);
 }

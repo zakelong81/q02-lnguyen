@@ -145,8 +145,8 @@ Piece Piezas::gameState()
       countO = 0;
       column++;
   }
-  if(aX>aO)             return aX;
-  else if(aO > aX)      return aO;
+  if(aX>aO)             return X;
+  else if(aO > aX)      return O;
   else                return Blank;
   return Blank;
 }
