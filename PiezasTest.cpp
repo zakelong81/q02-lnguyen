@@ -34,16 +34,6 @@ TEST(PiezasTest, structorCheck)
   ASSERT_EQ(1,check);
 }
 
-TEST(PiezasTest, toggleCheck) {
-  Piezas piezas;
-  bool check=1;
-  if(piezas.switchTurn()!=O)
-  {
-    check=0;
-  }
-  ASSERT_EQ(1,check);
-}
-
 TEST(PiezasTest, winnerCheckX)
 {
   Piezas piezas;

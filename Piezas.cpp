@@ -47,10 +47,40 @@ void Piezas::reset()
 **/
 Piece Piezas::dropPiece(int column)
 {
-  if (turn==X)
-    return turn=O;
-  if (turn==O)
-    return turn=X;
+  Piece pi=turn;
+  if(column>BOARD_COLS-1)
+  {
+    if (turn==X)  turn=O;
+    if  (turn==O) turn=X;
+    return Invalid;
+  }
+  if(board[0][column]!=Blank)
+  {
+    if (turn==X)  turn=O;
+    if  (turn==O) turn=X;
+     return Blank;
+  }
+  if(board[2][column]==Blank)
+  {
+    board[2][column]=turn;
+    pi=turn;
+    if (turn==X)  turn=O;
+    if  (turn==O) turn=X;
+  }
+  else if(board[1][column]==Blank)
+  {
+    board[1][column]=turn;
+    pi=turn;
+    if (turn==X)  turn=O;
+    if  (turn==O) turn=X;
+  }
+  else if(board[0][column]==Blank)
+  {
+   board[0][column]=turn;
+   pi=turn;
+   if (turn==X)  turn=O;
+   if  (turn==O) turn=X;
+  }
 }
 
 /**
